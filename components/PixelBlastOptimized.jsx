@@ -17,14 +17,11 @@ function PixelBlastOptimized(props) {
   const quality = useAdaptiveQuality();
   const canvasRef = useRef(null);
 
-  // Use CSS gradient fallback for low-end devices
+  // Use static gradient fallback for low-end devices (no animation)
   if (quality === 'low') {
     return (
       <div 
-        className="w-full h-full bg-gradient-to-br from-primary/20 via-primary/10 to-transparent animate-gradient"
-        style={{
-          backgroundSize: '400% 400%',
-        }}
+        className="w-full h-full bg-gradient-to-br from-primary/20 via-primary/10 to-transparent"
       />
     );
   }
@@ -54,7 +51,7 @@ function SimplifiedPixelBlast({ color = '#B19EEF', canvasRef }) {
 
     let animationId;
     let particles = [];
-    const particleCount = 30; // Reduced from potentially hundreds
+    const particleCount = 24; // Further reduced for medium devices
 
     class Particle {
       constructor() {

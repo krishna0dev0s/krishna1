@@ -8,6 +8,8 @@ import { dark } from '@clerk/themes';
 import { Toaster } from "@/components/ui/sonner";
 import PixelBlastBg from "@/components/PixelBlastBg";
 import { ClerkTimeoutHandler } from "@/components/clerk-timeout-handler";
+import { MotionConfig } from "framer-motion";
+import { PwaRegister } from "@/components/pwa-register";
 
 const inter = Inter({ 
   subsets: ["latin"],
@@ -18,6 +20,7 @@ const inter = Inter({
 export const metadata = {
   title: "watshibo",
   description: "bankai",
+  manifest: "/manifest.webmanifest",
   viewport: {
     width: 'device-width',
     initialScale: 1,
@@ -29,6 +32,13 @@ export const metadata = {
 export const dynamic = "force-dynamic";
 
 export default function RootLayout({ children }) {
+  const defaultSpring = {
+    type: 'spring',
+    stiffness: 220,
+    damping: 26,
+    mass: 0.9,
+  };
+
   return (
     <ClerkProvider
       appearance={{
@@ -46,30 +56,33 @@ export default function RootLayout({ children }) {
           <link rel="dns-prefetch" href="https://clerk.com" />
         </head>
         <body className={`${inter.className} optimize-text`}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <ClerkTimeoutHandler />
-            <PixelBlastBg />
-            <div className="relative z-0">
-              <div className="fixed top-0 left-0 right-0 z-50 bg-background/30 backdrop-blur-[6px] shadow-lg border-b border-white/10 contain-paint">
-                <Header />
+          <MotionConfig transition={defaultSpring} reducedMotion="user">
+            <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+              <ClerkTimeoutHandler />
+              <PwaRegister />
+              <PixelBlastBg />
+              <div className="relative z-0">
+                <div className="fixed top-0 left-0 right-0 z-50 bg-background/30 backdrop-blur-[6px] shadow-lg border-b border-white/10 contain-paint">
+                  <Header />
+                </div>
+                <main className="min-h-screen pt-01">{children}</main>
+                <footer className="text-center py-4 text-sm text-muted-foreground relative z-10">
+                  made with ❤️ by krishna gupta
+                </footer>
               </div>
-              <main className="min-h-screen pt-01">{children}</main>
-              <footer className="text-center py-4 text-sm text-muted-foreground relative z-10">
-                made with ❤️ by krishna gupta
-              </footer>
-            </div>
-            <Toaster 
-              position="top-center"
-              expand={true}
-              richColors
-              closeButton
-            />
-          </ThemeProvider>
+              <Toaster 
+                position="top-center"
+                expand={true}
+                richColors
+                closeButton
+              />
+            </ThemeProvider>
+          </MotionConfig>
         </body>
       </html>
     </ClerkProvider>

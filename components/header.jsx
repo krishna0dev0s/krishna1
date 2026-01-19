@@ -31,6 +31,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { checkUser } from "@/lib/checkUser";
+import ThemeSwitcher from "@/components/theme-switcher";
 
 const Header = async() => {
   try {
@@ -42,15 +43,15 @@ const Header = async() => {
     <header
       className="border-b sticky top-0 z-50"
       style={{
-        backgroundColor: "rgba(0, 0, 0, 0.4)",
+        backgroundColor: "var(--nav-surface)",
         color: "var(--card-foreground)",
-        backdropFilter: "saturate(180%) blur(8px)",
-        WebkitBackdropFilter: "saturate(180%) blur(8px)",
-        borderBottom: "1px solid rgba(255, 255, 255, 0.1)",
-        boxShadow: "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)"
+        backdropFilter: "saturate(180%) blur(10px)",
+        WebkitBackdropFilter: "saturate(180%) blur(10px)",
+        borderBottom: "1px solid var(--nav-border)",
+        boxShadow: "var(--nav-shadow)",
       }}
     >
-      <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
+      <nav className="container mx-auto px-3 sm:px-4 h-16 flex items-center justify-between gap-2">
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image
@@ -64,7 +65,9 @@ const Header = async() => {
         </Link>
 
         {/* Navigation & Auth */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-3 overflow-x-auto no-scrollbar max-w-full">
+          <ThemeSwitcher />
+
           <SignedIn>
             {/* Dashboard */}
             <Link href="/dashboard">

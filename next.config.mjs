@@ -24,14 +24,7 @@ const nextConfig = {
   // Performance optimizations
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion', 'three', 'recharts'],
-    turbo: {
-      resolveAlias: {
-        canvas: './empty-module.js',
-      },
-    },
   },
-  // Empty turbopack config to acknowledge we're using webpack config intentionally
-  turbopack: {},
   // Suppress source map warnings in development and optimize webpack
   webpack: (config, { dev, isServer }) => {
     if (dev) {
@@ -87,8 +80,24 @@ const nextConfig = {
   compress: true,
   // Optimize production builds
   productionBrowserSourceMaps: false,
-  // Reduce bundle size
-  swcMinify: true,
+  // PWA headers for manifest and service worker
+  async headers() {
+    return [
+      {
+        source: "/manifest.webmanifest",
+        headers: [
+          { key: "Content-Type", value: "application/manifest+json" },
+          { key: "Cache-Control", value: "public, max-age=0, must-revalidate" },
+        ],
+      },
+      {
+        source: "/sw.js",
+        headers: [
+          { key: "Cache-Control", value: "public, max-age=0, must-revalidate" },
+        ],
+      },
+    ];
+  },
 };
 
 export default nextConfig;

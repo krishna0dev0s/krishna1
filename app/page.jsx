@@ -12,11 +12,11 @@ import { ArrowRight, Sparkles, FileText, PenTool, GraduationCap, Code2, MapPin, 
 
 export default function Home() {
   return (
-    <div className="w-full bg-muted/40" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
+    <div className="w-full bg-background" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
       <HeroSection />
 
       {/* Growth Tools Section */}
-      <section className="w-full py-16 md:py-28 lg:py-32 bg-background">
+      <section className="w-full py-12 md:py-24 lg:py-28 bg-background">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-4xl mx-auto mb-16">
             <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">⚡ Growth Tools</span>
@@ -28,11 +28,11 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto">
             {/* Build Resume */}
             <Link href="/resume">
               <Card className="group h-full border border-muted/50 bg-background/60 backdrop-blur-sm hover:border-primary/50 hover:bg-background hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl cursor-pointer">
-                <CardContent className="p-8 flex flex-col items-center text-center h-full justify-center gap-4">
+                <CardContent className="p-6 sm:p-8 flex flex-col items-center text-center h-full justify-center gap-4 min-h-[220px] sm:min-h-[240px] lg:min-h-[260px] w-full">
                   <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
                     <FileText className="h-8 w-8 text-primary" />
                   </div>
@@ -49,7 +49,7 @@ export default function Home() {
             {/* Cover Letter */}
             <Link href="/ai-cover-letter">
               <Card className="group h-full border border-muted/50 bg-background/60 backdrop-blur-sm hover:border-primary/50 hover:bg-background hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl cursor-pointer">
-                <CardContent className="p-8 flex flex-col items-center text-center h-full justify-center gap-4">
+                <CardContent className="p-6 sm:p-8 flex flex-col items-center text-center h-full justify-center gap-4 min-h-[220px] sm:min-h-[240px] lg:min-h-[260px] w-full">
                   <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
                     <PenTool className="h-8 w-8 text-primary" />
                   </div>
@@ -66,7 +66,7 @@ export default function Home() {
             {/* Interview Prep */}
             <Link href="/interview">
               <Card className="group h-full border border-muted/50 bg-background/60 backdrop-blur-sm hover:border-primary/50 hover:bg-background hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl cursor-pointer">
-                <CardContent className="p-8 flex flex-col items-center text-center h-full justify-center gap-4">
+                <CardContent className="p-6 sm:p-8 flex flex-col items-center text-center h-full justify-center gap-4 min-h-[220px] sm:min-h-[240px] lg:min-h-[260px] w-full">
                   <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
                     <GraduationCap className="h-8 w-8 text-primary" />
                   </div>
@@ -83,7 +83,7 @@ export default function Home() {
             {/* Mock Interview Demo */}
             <Link href="/mock-interview-demo">
               <Card className="group h-full border border-muted/50 bg-background/60 backdrop-blur-sm hover:border-primary/50 hover:bg-background hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl cursor-pointer">
-                <CardContent className="p-8 flex flex-col items-center text-center h-full justify-center gap-4">
+                <CardContent className="p-6 sm:p-8 flex flex-col items-center text-center h-full justify-center gap-4 min-h-[220px] sm:min-h-[240px] lg:min-h-[260px] w-full">
                   <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
                     <GraduationCap className="h-8 w-8 text-primary" />
                   </div>
@@ -100,7 +100,7 @@ export default function Home() {
             {/* Coding Practice */}
             <Link href="/leetcode">
               <Card className="group h-full border border-muted/50 bg-background/60 backdrop-blur-sm hover:border-primary/50 hover:bg-background hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl cursor-pointer">
-                <CardContent className="p-8 flex flex-col items-center text-center h-full justify-center gap-4">
+                <CardContent className="p-6 sm:p-8 flex flex-col items-center text-center h-full justify-center gap-4 min-h-[220px] sm:min-h-[240px] lg:min-h-[260px] w-full">
                   <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
                     <Code2 className="h-8 w-8 text-primary" />
                   </div>
@@ -117,7 +117,7 @@ export default function Home() {
             {/* Roadmap */}
             <Link href="/roadmap">
               <Card className="group h-full border border-muted/50 bg-background/60 backdrop-blur-sm hover:border-primary/50 hover:bg-background hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl cursor-pointer">
-                <CardContent className="p-8 flex flex-col items-center text-center h-full justify-center gap-4">
+                <CardContent className="p-6 sm:p-8 flex flex-col items-center text-center h-full justify-center gap-4 min-h-[220px] sm:min-h-[240px] lg:min-h-[260px] w-full">
                   <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
                     <MapPin className="h-8 w-8 text-primary" />
                   </div>
@@ -134,7 +134,7 @@ export default function Home() {
             {/* Learning Path */}
             <Link href="/learning-path">
               <Card className="group h-full border border-muted/50 bg-background/60 backdrop-blur-sm hover:border-primary/50 hover:bg-background hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl cursor-pointer">
-                <CardContent className="p-8 flex flex-col items-center text-center h-full justify-center gap-4">
+                <CardContent className="p-6 sm:p-8 flex flex-col items-center text-center h-full justify-center gap-4 min-h-[220px] sm:min-h-[240px] lg:min-h-[260px] w-full">
                   <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
                     <Zap className="h-8 w-8 text-primary" />
                   </div>
@@ -152,11 +152,11 @@ export default function Home() {
       </section>
 
       {/* Feature Cards Section */}
-      <section className="w-full py-16 md:py-28 lg:py-32 bg-background">
+      <section className="w-full py-14 md:py-26 lg:py-30 bg-background">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-4xl mx-auto mb-16">
             <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">✨ Features</span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-center mb-6 text-foreground leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-center mb-5 sm:mb-6 text-foreground leading-tight">
               Powerful features designed for success
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
@@ -167,9 +167,9 @@ export default function Home() {
             {features.map((feature, index) => (
               <Card
                 key={index}
-                className="border border-muted/50 bg-background/60 backdrop-blur-sm hover:border-primary/50 hover:bg-background hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl p-8 group"
+                className="border border-muted/50 bg-background/60 backdrop-blur-sm hover:border-primary/50 hover:bg-background hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl p-6 sm:p-7 group"
               >
-                <CardContent className="text-center flex flex-col items-center">
+                <CardContent className="text-center flex flex-col items-center gap-4 min-h-[220px] sm:min-h-[240px] lg:min-h-[260px]">
                   <div className="flex flex-col items-center justify-center gap-5 w-full">
                     <div className="transform group-hover:scale-110 transition-transform duration-300">
                       {feature.icon}
@@ -189,7 +189,7 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="w-full py-16 md:py-28 bg-muted/40">
+      <section className="w-full py-14 md:py-24 bg-muted/40">
         <div className="container mx-auto px-6 md:px-10">
           <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
             <StatsCounter stat="50+" label="Industries Covered" />
@@ -201,11 +201,11 @@ export default function Home() {
       </section>
 
       {/* How It Works Section */}
-      <section className="w-full py-16 md:py-28 lg:py-32 bg-background relative overflow-hidden">
+      <section className="w-full py-14 md:py-26 lg:py-30 bg-background relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-4xl mx-auto mb-16">
             <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">🚀 How it works</span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-5 sm:mb-6 leading-tight">
               Simple steps to success
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground leading-relaxed">
@@ -217,7 +217,7 @@ export default function Home() {
             {howItWorks.map((item, index) => (
               <div
                 key={index}
-                className="group flex flex-col items-center text-center space-y-6 p-8 rounded-2xl border border-border/50 bg-card/60 backdrop-blur-sm shadow-sm hover:shadow-xl hover:border-primary/50 hover:bg-card transition-all duration-500"
+                className="group flex flex-col items-center text-center space-y-6 p-6 sm:p-7 rounded-2xl border border-border/50 bg-card/60 backdrop-blur-sm shadow-sm hover:shadow-xl hover:border-primary/50 hover:bg-card transition-all duration-500 min-h-[240px] sm:min-h-[260px]"
               >
                 <div className="relative">
                   <div className="absolute inset-0 bg-primary/20 rounded-full blur-lg group-hover:bg-primary/30 transition-colors duration-300"></div>
@@ -237,11 +237,11 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="w-full py-16 md:py-28 bg-muted/40">
+      <section className="w-full py-14 md:py-24 bg-muted/40">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-4xl mx-auto mb-16">
             <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">💬 Success Stories</span>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-tight">
               Loved by professionals
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground mt-4 leading-relaxed">
@@ -249,11 +249,11 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 max-w-6xl mx-auto">
             {testimonial.map((t, i) => (
               <article
                 key={i}
-                className="bg-card/70 backdrop-blur border border-border/50 rounded-2xl p-8 flex flex-col gap-5 shadow-sm hover:shadow-lg hover:border-primary/30 transition-all duration-300 group"
+                className="bg-card/70 backdrop-blur border border-border/50 rounded-2xl p-6 sm:p-7 flex flex-col gap-5 shadow-sm hover:shadow-lg hover:border-primary/30 transition-all duration-300 group min-h-[240px] sm:min-h-[260px]"
                 aria-labelledby={`testimonial-title-${i}`}
               >
                 <div className="flex items-start gap-1" aria-hidden>

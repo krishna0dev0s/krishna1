@@ -1,0 +1,19 @@
+{
+  "name": "WatshiBo",
+  "short_name": "WatshiBo",
+  "description": "AI-powered study and interview companion",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f5f7fb",
+  "theme_color": "#0f172a",
+  "icons": [
+    {
+      "src": "/file.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

@@ -11,7 +11,7 @@ export function AdaptiveMotion({
   className = '',
   initial = { opacity: 0, y: 20 },
   animate = { opacity: 1, y: 0 },
-  transition = { duration: 0.3 },
+  transition,
   ...props 
 }) {
   const { animationSettings, shouldReduceMotion } = usePerformance();
@@ -21,10 +21,17 @@ export function AdaptiveMotion({
     return <div className={className}>{children}</div>;
   }
 
-  // Adjust transition based on device capabilities
+  // Prefer a smooth, critically-damped spring and scale duration by device capability
+  const baseTransition = transition ?? {
+    type: 'spring',
+    stiffness: 220,
+    damping: 26,
+    mass: 0.9,
+  };
+
   const adaptiveTransition = {
-    ...transition,
-    duration: animationSettings.duration / 1000,
+    ...baseTransition,
+    duration: (baseTransition?.duration ?? animationSettings.duration / 1000),
   };
 
   return (
@@ -33,6 +40,7 @@ export function AdaptiveMotion({
       animate={animate}
       transition={adaptiveTransition}
       className={className}
+      style={{ willChange: 'transform, opacity' }}
       {...props}
     >
       {children}
@@ -75,6 +83,7 @@ export function AdaptiveStagger({
       initial="hidden"
       animate="show"
       className={className}
+      style={{ willChange: 'transform, opacity' }}
     >
       {Array.isArray(children) ? (
         children.map((child, index) => (
@@ -109,8 +118,9 @@ export function AdaptiveFadeIn({
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: threshold }}
-      transition={{ duration: 0.5, delay }}
+      transition={{ duration: 0.55, delay, ease: [0.22, 1, 0.36, 1] }}
       className={className}
+      style={{ willChange: 'transform, opacity' }}
     >
       {children}
     </motion.div>
