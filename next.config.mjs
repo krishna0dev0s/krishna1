@@ -1,5 +1,9 @@
+const isTurbopack = process.env.TURBOPACK === '1';
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  // Silence Next 16 Turbopack warning; empty config is acceptable
+  turbopack: {},
   images: {
     remotePatterns: [
       {
@@ -26,7 +30,10 @@ const nextConfig = {
     optimizePackageImports: ['lucide-react', 'framer-motion', 'three', 'recharts'],
   },
   // Suppress source map warnings in development and optimize webpack
-  webpack: (config, { dev, isServer }) => {
+  webpack: (config, { dev }) => {
+    // Skip heavy webpack tweaks if Turbopack is running; it ignores this hook anyway
+    if (isTurbopack) return config;
+
     if (dev) {
       config.devtool = 'cheap-module-source-map';
     }
