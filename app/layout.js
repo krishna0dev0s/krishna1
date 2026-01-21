@@ -54,6 +54,11 @@ export default function RootLayout({ children }) {
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
           <link rel="dns-prefetch" href="https://clerk.com" />
+          <link rel="manifest" href="/manifest.webmanifest" />
+          <link rel="apple-touch-icon" href="/image.png" />
+          <meta name="theme-color" content="#0f172a" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         </head>
         <body className={`${inter.className} optimize-text`}>
           <MotionConfig transition={defaultSpring} reducedMotion="user">
