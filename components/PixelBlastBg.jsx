@@ -1,11 +1,35 @@
 "use client";
 
-import PixelBlast from './PixelBlast';
+import { useEffect, useState } from 'react';
+import dynamic from 'next/dynamic';
+
+// Load the optimized wrapper only on the client to avoid bundling Three.js upfront
+const PixelBlastOptimized = dynamic(() => import('./PixelBlastOptimized'), {
+  ssr: false,
+  loading: () => (
+    <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent" />
+  ),
+});
 
 export default function PixelBlastBg() {
+  const [shouldRender, setShouldRender] = useState(false);
+
+  useEffect(() => {
+    // Skip the heavy background on small screens or when reduced motion is preferred
+    const isDesktop = window.matchMedia('(min-width: 768px)').matches;
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    setShouldRender(isDesktop && !prefersReducedMotion);
+  }, []);
+
+  if (!shouldRender) {
+    return (
+      <div className="fixed inset-0 -z-20 w-full h-screen pointer-events-none bg-gradient-to-b from-background via-background to-background" />
+    );
+  }
+
   return (
     <div className="fixed inset-0 -z-20 w-full h-screen pointer-events-none">
-      <PixelBlast
+      <PixelBlastOptimized
         variant="circle"
         pixelSize={6}
         color="#B19EEF"
