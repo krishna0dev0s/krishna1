@@ -78,7 +78,7 @@
                                       <span className="sr-only">Open navigation</span>
                                     </Button>
                                   </DropdownMenuTrigger>
-                                  <DropdownMenuContent align="end" className="w-56">
+                                    <DropdownMenuContent align="end" className="w-56 liquid-glass-surface">
                                     <DropdownMenuLabel>Main</DropdownMenuLabel>
                                     <DropdownMenuSeparator />
                                     <DropdownMenuItem asChild>
@@ -167,7 +167,7 @@
                                         <ChevronDown className="h-4 w-4 ml-1" />
                                       </Button>
                                     </DropdownMenuTrigger>
-                                    <DropdownMenuContent align="end">
+                                    <DropdownMenuContent align="end" className="liquid-glass-surface">
                                       <DropdownMenuLabel>Career Boosters</DropdownMenuLabel>
                                       <DropdownMenuSeparator />
                                       <DropdownMenuItem asChild>
@@ -253,133 +253,3 @@
                     };
 
                     export default Header;
-                    <span>Mock Interview Demo</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/leetcode" className="flex items-center gap-2 w-full">
-                    <Code2 className="h-4 w-4" />
-                    <span>Leetcode</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/roadmap" className="flex items-center gap-2 w-full">
-                    <MapPin className="h-4 w-4" />
-                    <span>Roadmap</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="/learning-path" className="flex items-center gap-2 w-full">
-                    <Zap className="h-4 w-4" />
-                    <span>Structured Learning Path</span>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem asChild>
-                        {/* Mobile compact menu for signed-in users */}
-                        <DropdownMenu>
-                          <DropdownMenuTrigger asChild>
-                            <Button variant="outline" size="sm" className="md:hidden">
-                              <StarsIcon className="h-4 w-4" />
-                              <span className="sr-only">Open navigation</span>
-                            </Button>
-                          </DropdownMenuTrigger>
-                          <DropdownMenuContent align="end" className="w-56">
-                            <DropdownMenuLabel>Main</DropdownMenuLabel>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuItem asChild>
-                              <Link href="/dashboard" className="flex items-center gap-2 w-full">
-                                <LayoutDashboard className="h-4 w-4" />
-                                <span>Industry Insights</span>
-                              </Link>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem asChild>
-                              <Link href="/analytics" className="flex items-center gap-2 w-full">
-                                <BarChart3 className="h-4 w-4" />
-                                <span>Analytics</span>
-                              </Link>
-                            </DropdownMenuItem>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuLabel>Growth Tools</DropdownMenuLabel>
-                            <DropdownMenuSeparator />
-                            <DropdownMenuItem asChild>
-                              <Link href="/resume" className="flex items-center gap-2 w-full">
-                                <FileText className="h-4 w-4" />
-                                <span>Build Resume</span>
-                              </Link>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem asChild>
-                              <Link href="/ai-cover-letter" className="flex items-center gap-2 w-full">
-                                <PenBox className="h-4 w-4" />
-                                <span>Cover Letter</span>
-                              </Link>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem asChild>
-                              <Link href="/interview" className="flex items-center gap-2 w-full">
-                                <GraduationCapIcon className="h-4 w-4" />
-                                <span>Interview Prep</span>
-                              </Link>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem asChild>
-                              <Link href="/mock-interview-demo" className="flex items-center gap-2 w-full">
-                                <GraduationCapIcon className="h-4 w-4" />
-                                <span>Mock Interview Demo</span>
-                              </Link>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem asChild>
-                              <Link href="/leetcode" className="flex items-center gap-2 w-full">
-                                <Code2 className="h-4 w-4" />
-                                <span>Leetcode</span>
-                              </Link>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem asChild>
-                              <Link href="/roadmap" className="flex items-center gap-2 w-full">
-                                <MapPin className="h-4 w-4" />
-                                <span>Roadmap</span>
-                              </Link>
-                            </DropdownMenuItem>
-                            <DropdownMenuItem asChild>
-                              <Link href="/learning-path" className="flex items-center gap-2 w-full">
-                                <Zap className="h-4 w-4" />
-                                <span>Structured Learning Path</span>
-                              </Link>
-                            </DropdownMenuItem>
-                          </DropdownMenuContent>
-                        </DropdownMenu>
-                  <Link href="/resume" className="flex items-center gap-2 w-full">
-                    <DollarSign className="h-4 w-4" />
-                    <span>Subscription</span>
-                  </Link>
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </SignedIn>
-
-          {/* Auth Buttons */}
-          <SignedOut>
-            <SignInButton />
-            <SignUpButton>
-              <Button variant="outline">Sign Up</Button>
-            </SignUpButton>
-          </SignedOut>
-
-          {/* User Avatar */}
-          <SignedIn>
-            <UserButton
-              appearance={{
-                elements: {
-                  avatarBox: "w-10 h-10",
-                  userButtonPopoverCard: "shadow-xl",
-                  userPreviewMainIdentifier: "font-semibold",
-                },
-              }}
-              afterSignOutUrl="/"
-            />
-          </SignedIn>
-        </div>
-      </nav>
-    </header>
-  );
-};
-
-export default Header;

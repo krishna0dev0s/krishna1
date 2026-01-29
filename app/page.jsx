@@ -1,6 +1,7 @@
 import HeroSection from "@/components/hero";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
+import { CardContent } from "@/components/ui/card";
+import { LiquidGlassCard } from "@/components/ui/liquid-glass";
 import { features } from "@/data/features";
 import { howItWorks } from "@/data/howItWorks";
 import { testimonial } from "@/data/testimonial";
@@ -12,14 +13,22 @@ import { ArrowRight, Sparkles, FileText, PenTool, GraduationCap, Code2, MapPin, 
 
 export default function Home() {
   return (
-    <div className="w-full bg-background" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
-      <HeroSection />
+    <div className="relative w-full bg-background glass-page-shell" style={{ fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif' }}>
+      <div className="home-ambient">
+        <div className="glass-grid" aria-hidden />
+        <div className="orb orb-a" aria-hidden />
+        <div className="orb orb-b" aria-hidden />
+        <div className="orb orb-c" aria-hidden />
+      </div>
+
+      <div className="relative z-10">
+        <HeroSection />
 
       {/* Growth Tools Section */}
       <section className="w-full py-12 md:py-24 lg:py-28 bg-background">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-4xl mx-auto mb-16">
-            <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">⚡ Growth Tools</span>
+            <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-foreground text-sm font-semibold mb-4 border border-white/20">⚡ Growth Tools</span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-foreground leading-tight">
               Powerful tools to accelerate your career
             </h2>
@@ -31,10 +40,16 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto">
             {/* Build Resume */}
             <Link href="/resume">
-              <Card className="group h-full border border-muted/50 bg-background/60 backdrop-blur-sm hover:border-primary/50 hover:bg-background hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl cursor-pointer">
+              <LiquidGlassCard
+                draggable={false}
+                blurIntensity="xl"
+                glowIntensity="sm"
+                shadowIntensity="sm"
+                className="group h-full hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl cursor-pointer text-foreground"
+              >
                 <CardContent className="p-6 sm:p-8 flex flex-col items-center text-center h-full justify-center gap-4 min-h-[220px] sm:min-h-[240px] lg:min-h-[260px] w-full">
-                  <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                    <FileText className="h-8 w-8 text-primary" />
+                  <div className="p-4 rounded-full bg-white/10 border border-white/15 transition-colors text-foreground/90">
+                    <FileText className="h-8 w-8" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold tracking-tight mb-2 text-foreground">Build Resume</h3>
@@ -43,15 +58,21 @@ export default function Home() {
                     </p>
                   </div>
                 </CardContent>
-              </Card>
+              </LiquidGlassCard>
             </Link>
 
             {/* Cover Letter */}
             <Link href="/ai-cover-letter">
-              <Card className="group h-full border border-muted/50 bg-background/60 backdrop-blur-sm hover:border-primary/50 hover:bg-background hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl cursor-pointer">
+              <LiquidGlassCard
+                draggable={false}
+                blurIntensity="xl"
+                glowIntensity="sm"
+                shadowIntensity="sm"
+                className="group h-full hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl cursor-pointer text-foreground"
+              >
                 <CardContent className="p-6 sm:p-8 flex flex-col items-center text-center h-full justify-center gap-4 min-h-[220px] sm:min-h-[240px] lg:min-h-[260px] w-full">
-                  <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                    <PenTool className="h-8 w-8 text-primary" />
+                  <div className="p-4 rounded-full bg-white/10 border border-white/15 transition-colors text-foreground/90">
+                    <PenTool className="h-8 w-8" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold tracking-tight mb-2 text-foreground">Cover Letter</h3>
@@ -60,15 +81,21 @@ export default function Home() {
                     </p>
                   </div>
                 </CardContent>
-              </Card>
+              </LiquidGlassCard>
             </Link>
 
             {/* Interview Prep */}
             <Link href="/interview">
-              <Card className="group h-full border border-muted/50 bg-background/60 backdrop-blur-sm hover:border-primary/50 hover:bg-background hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl cursor-pointer">
+              <LiquidGlassCard
+                draggable={false}
+                blurIntensity="xl"
+                glowIntensity="sm"
+                shadowIntensity="sm"
+                className="group h-full hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl cursor-pointer text-foreground"
+              >
                 <CardContent className="p-6 sm:p-8 flex flex-col items-center text-center h-full justify-center gap-4 min-h-[220px] sm:min-h-[240px] lg:min-h-[260px] w-full">
-                  <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                    <GraduationCap className="h-8 w-8 text-primary" />
+                  <div className="p-4 rounded-full bg-white/10 border border-white/15 transition-colors text-foreground/90">
+                    <GraduationCap className="h-8 w-8" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold tracking-tight mb-2 text-foreground">Interview Prep</h3>
@@ -77,15 +104,21 @@ export default function Home() {
                     </p>
                   </div>
                 </CardContent>
-              </Card>
+              </LiquidGlassCard>
             </Link>
 
             {/* Mock Interview Demo */}
             <Link href="/mock-interview-demo">
-              <Card className="group h-full border border-muted/50 bg-background/60 backdrop-blur-sm hover:border-primary/50 hover:bg-background hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl cursor-pointer">
+              <LiquidGlassCard
+                draggable={false}
+                blurIntensity="xl"
+                glowIntensity="sm"
+                shadowIntensity="sm"
+                className="group h-full hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl cursor-pointer text-foreground"
+              >
                 <CardContent className="p-6 sm:p-8 flex flex-col items-center text-center h-full justify-center gap-4 min-h-[220px] sm:min-h-[240px] lg:min-h-[260px] w-full">
-                  <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                    <GraduationCap className="h-8 w-8 text-primary" />
+                  <div className="p-4 rounded-full bg-white/10 border border-white/15 transition-colors text-foreground/90">
+                    <GraduationCap className="h-8 w-8" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold tracking-tight mb-2 text-foreground">AI Mock Interviews</h3>
@@ -94,15 +127,21 @@ export default function Home() {
                     </p>
                   </div>
                 </CardContent>
-              </Card>
+              </LiquidGlassCard>
             </Link>
 
             {/* Coding Practice */}
             <Link href="/leetcode">
-              <Card className="group h-full border border-muted/50 bg-background/60 backdrop-blur-sm hover:border-primary/50 hover:bg-background hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl cursor-pointer">
+              <LiquidGlassCard
+                draggable={false}
+                blurIntensity="xl"
+                glowIntensity="sm"
+                shadowIntensity="sm"
+                className="group h-full hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl cursor-pointer text-foreground"
+              >
                 <CardContent className="p-6 sm:p-8 flex flex-col items-center text-center h-full justify-center gap-4 min-h-[220px] sm:min-h-[240px] lg:min-h-[260px] w-full">
-                  <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                    <Code2 className="h-8 w-8 text-primary" />
+                  <div className="p-4 rounded-full bg-white/10 border border-white/15 transition-colors text-foreground/90">
+                    <Code2 className="h-8 w-8" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold tracking-tight mb-2 text-foreground">Coding Practice</h3>
@@ -111,15 +150,21 @@ export default function Home() {
                     </p>
                   </div>
                 </CardContent>
-              </Card>
+              </LiquidGlassCard>
             </Link>
 
             {/* Roadmap */}
             <Link href="/roadmap">
-              <Card className="group h-full border border-muted/50 bg-background/60 backdrop-blur-sm hover:border-primary/50 hover:bg-background hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl cursor-pointer">
+              <LiquidGlassCard
+                draggable={false}
+                blurIntensity="xl"
+                glowIntensity="sm"
+                shadowIntensity="sm"
+                className="group h-full hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl cursor-pointer text-foreground"
+              >
                 <CardContent className="p-6 sm:p-8 flex flex-col items-center text-center h-full justify-center gap-4 min-h-[220px] sm:min-h-[240px] lg:min-h-[260px] w-full">
-                  <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                    <MapPin className="h-8 w-8 text-primary" />
+                  <div className="p-4 rounded-full bg-white/10 border border-white/15 transition-colors text-foreground/90">
+                    <MapPin className="h-8 w-8" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold tracking-tight mb-2 text-foreground">Career Roadmap</h3>
@@ -128,15 +173,21 @@ export default function Home() {
                     </p>
                   </div>
                 </CardContent>
-              </Card>
+              </LiquidGlassCard>
             </Link>
 
             {/* Learning Path */}
             <Link href="/learning-path">
-              <Card className="group h-full border border-muted/50 bg-background/60 backdrop-blur-sm hover:border-primary/50 hover:bg-background hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl cursor-pointer">
+              <LiquidGlassCard
+                draggable={false}
+                blurIntensity="xl"
+                glowIntensity="sm"
+                shadowIntensity="sm"
+                className="group h-full hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl cursor-pointer text-foreground"
+              >
                 <CardContent className="p-6 sm:p-8 flex flex-col items-center text-center h-full justify-center gap-4 min-h-[220px] sm:min-h-[240px] lg:min-h-[260px] w-full">
-                  <div className="p-4 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                    <Zap className="h-8 w-8 text-primary" />
+                  <div className="p-4 rounded-full bg-white/10 border border-white/15 transition-colors text-foreground/90">
+                    <Zap className="h-8 w-8" />
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold tracking-tight mb-2 text-foreground">Learning Path</h3>
@@ -145,7 +196,7 @@ export default function Home() {
                     </p>
                   </div>
                 </CardContent>
-              </Card>
+              </LiquidGlassCard>
             </Link>
           </div>
         </div>
@@ -155,7 +206,7 @@ export default function Home() {
       <section className="w-full py-14 md:py-26 lg:py-30 bg-background">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-4xl mx-auto mb-16">
-            <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">✨ Features</span>
+            <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-foreground text-sm font-semibold mb-4 border border-white/20">✨ Features</span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-center mb-5 sm:mb-6 text-foreground leading-tight">
               Powerful features designed for success
             </h2>
@@ -165,9 +216,13 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {features.map((feature, index) => (
-              <Card
+              <LiquidGlassCard
                 key={index}
-                className="border border-muted/50 bg-background/60 backdrop-blur-sm hover:border-primary/50 hover:bg-background hover:shadow-xl hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl p-6 sm:p-7 group"
+                draggable={false}
+                blurIntensity="xl"
+                glowIntensity="sm"
+                shadowIntensity="sm"
+                className="hover:scale-[1.02] transition-all duration-500 ease-out rounded-2xl p-6 sm:p-7 group text-foreground"
               >
                 <CardContent className="text-center flex flex-col items-center gap-4 min-h-[220px] sm:min-h-[240px] lg:min-h-[260px]">
                   <div className="flex flex-col items-center justify-center gap-5 w-full">
@@ -182,7 +237,7 @@ export default function Home() {
                     </p>
                   </div>
                 </CardContent>
-              </Card>
+              </LiquidGlassCard>
             ))}
           </div>
         </div>
@@ -204,7 +259,7 @@ export default function Home() {
       <section className="w-full py-14 md:py-26 lg:py-30 bg-background relative overflow-hidden">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-4xl mx-auto mb-16">
-            <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">🚀 How it works</span>
+            <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-foreground text-sm font-semibold mb-4 border border-white/20">🚀 How it works</span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-5 sm:mb-6 leading-tight">
               Simple steps to success
             </h2>
@@ -215,22 +270,26 @@ export default function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
             {howItWorks.map((item, index) => (
-              <div
+              <LiquidGlassCard
                 key={index}
-                className="group flex flex-col items-center text-center space-y-6 p-6 sm:p-7 rounded-2xl border border-border/50 bg-card/60 backdrop-blur-sm shadow-sm hover:shadow-xl hover:border-primary/50 hover:bg-card transition-all duration-500 min-h-[240px] sm:min-h-[260px]"
+                draggable={false}
+                blurIntensity="xl"
+                glowIntensity="sm"
+                shadowIntensity="sm"
+                className="group flex flex-col items-center text-center space-y-6 p-6 sm:p-7 rounded-2xl transition-all duration-500 min-h-[240px] sm:min-h-[260px] text-foreground"
               >
                 <div className="relative">
-                  <div className="absolute inset-0 bg-primary/20 rounded-full blur-lg group-hover:bg-primary/30 transition-colors duration-300"></div>
-                  <div className="relative w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center text-primary text-3xl shadow-inner group-hover:scale-110 group-hover:bg-primary/20 transition-all duration-300">
+                  <div className="absolute inset-0 bg-white/15 rounded-full blur-lg transition-colors duration-300"></div>
+                  <div className="relative w-16 h-16 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-foreground/90 text-3xl shadow-inner group-hover:scale-110 transition-all duration-300">
                     {item.icon}
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm font-semibold text-primary mb-2">Step {index + 1}</div>
+                  <div className="text-sm font-semibold text-foreground/80 mb-2">Step {index + 1}</div>
                   <h3 className="font-bold text-xl md:text-2xl tracking-tight mb-3">{item.title}</h3>
                   <p className="text-muted-foreground text-base leading-relaxed">{item.description}</p>
                 </div>
-              </div>
+              </LiquidGlassCard>
             ))}
           </div>
         </div>
@@ -240,7 +299,7 @@ export default function Home() {
       <section className="w-full py-14 md:py-24 bg-muted/40">
         <div className="container mx-auto px-4 md:px-6">
           <div className="text-center max-w-4xl mx-auto mb-16">
-            <span className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-4">💬 Success Stories</span>
+            <span className="inline-block px-3 py-1 rounded-full bg-white/10 text-foreground text-sm font-semibold mb-4 border border-white/20">💬 Success Stories</span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-foreground leading-tight">
               Loved by professionals
             </h2>
@@ -251,9 +310,13 @@ export default function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 max-w-6xl mx-auto">
             {testimonial.map((t, i) => (
-              <article
+              <LiquidGlassCard
                 key={i}
-                className="bg-card/70 backdrop-blur border border-border/50 rounded-2xl p-6 sm:p-7 flex flex-col gap-5 shadow-sm hover:shadow-lg hover:border-primary/30 transition-all duration-300 group min-h-[240px] sm:min-h-[260px]"
+                draggable={false}
+                blurIntensity="xl"
+                glowIntensity="sm"
+                shadowIntensity="sm"
+                className="rounded-2xl p-6 sm:p-7 flex flex-col gap-5 transition-all duration-300 group min-h-[240px] sm:min-h-[260px] text-foreground"
                 aria-labelledby={`testimonial-title-${i}`}
               >
                 <div className="flex items-start gap-1" aria-hidden>
@@ -293,7 +356,7 @@ export default function Home() {
                     <p className="text-xs text-muted-foreground truncate">{t.role}</p>
                   </div>
                 </div>
-              </article>
+              </LiquidGlassCard>
             ))}
           </div>
         </div>
@@ -303,10 +366,16 @@ export default function Home() {
       <FAQSection />
       {/* CTA Section */}
       <section className="w-full">
-        <div className="mx-auto py-28 md:py-32 gradient rounded-3xl mx-4 md:mx-6">
+        <LiquidGlassCard
+          draggable={false}
+          blurIntensity="xl"
+          glowIntensity="sm"
+          shadowIntensity="sm"
+          className="mx-auto py-28 md:py-32 rounded-3xl mx-4 md:mx-6 text-foreground"
+        >
           <div className="flex flex-col items-center justify-center space-y-8 text-center max-w-4xl mx-auto px-4">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur border border-white/20">
-              <Sparkles className="w-4 h-4 text-primary" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 backdrop-blur border border-white/20 text-foreground">
+              <Sparkles className="w-4 h-4" />
               <span className="text-sm font-semibold">Limited Time Offer</span>
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-foreground leading-tight">
@@ -316,13 +385,14 @@ export default function Home() {
               Join thousands of professionals who have successfully landed their dream jobs with Watshibo's AI-powered interview companion.
             </p>
             <Link href="/dashboard">
-              <Button size="lg" className="px-8 py-6 text-base font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl" variant='secondary'>
+              <Button size="lg" className="px-8 py-6 text-base font-semibold transition-all duration-300 hover:scale-105 hover:shadow-2xl bg-foreground text-background border border-foreground/30" variant='secondary'>
                 Start Your Journey <ArrowRight className="ml-2 h-5 w-5" />
               </Button>
             </Link>
           </div>
-        </div>
+        </LiquidGlassCard>
       </section>
+      </div>
     </div>
   );
 }

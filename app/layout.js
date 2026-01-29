@@ -21,11 +21,12 @@ export const metadata = {
   title: "watshibo",
   description: "bankai",
   manifest: "/manifest.webmanifest",
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 5,
-  },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
 };
 
 // Prevent hydration errors globally
