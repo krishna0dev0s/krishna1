@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect, useCallback } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, Mic, MicOff, SkipForward, RotateCcw, VolumeX } from 'lucide-react';
 import { toast } from 'sonner';
@@ -35,6 +35,19 @@ export default function AnimatedVoiceInterview({ company, job, onBack, onComplet
   const audioContextRef = useRef(null);
   const analyserRef = useRef(null);
   const animationFrameRef = useRef(null);
+  const wasListeningRef = useRef(false);
+
+  const normalizeText = (text = '') => text.replace(/\s+/g, ' ').trim().toLowerCase();
+  const mergeTranscript = (finalText, interim) => {
+    const base = (finalText || '').trim();
+    const live = (interim || '').trim();
+    if (!live) return base;
+    if (!base) return live;
+    const normalizedBase = normalizeText(base);
+    const normalizedLive = normalizeText(live);
+    if (normalizedBase.endsWith(normalizedLive)) return base;
+    return `${base} ${live}`.replace(/\s+/g, ' ').trim();
+  };
   
   // Sync Deepgram state
   useEffect(() => {
@@ -217,7 +230,7 @@ export default function AnimatedVoiceInterview({ company, job, onBack, onComplet
       stopDeepgram();
       
       // Submit if we have transcript
-      const currentAnswer = (transcript + (interimText || '')).trim();
+      const currentAnswer = mergeTranscript(transcript, interimText);
       if (currentAnswer) {
         console.log('🎤 Mic muted with transcript, submitting...');
         await submitAnswer();
@@ -230,7 +243,8 @@ export default function AnimatedVoiceInterview({ company, job, onBack, onComplet
   };
   
   const submitAnswer = async (overrideText = null) => {
-    const answer = typeof overrideText === 'string' ? overrideText : (transcript + (interimText || '')).trim();
+    if (loading) return;
+    const answer = typeof overrideText === 'string' ? overrideText : mergeTranscript(transcript, interimText);
     if (!answer) return;
     
     setLoading(true);
@@ -276,6 +290,7 @@ export default function AnimatedVoiceInterview({ company, job, onBack, onComplet
     
     setIsSpeaking(true);
     // If listening, stop listening while speaking
+    wasListeningRef.current = isListening;
     stopDeepgram();
     
     synthRef.current.cancel();
@@ -286,16 +301,8 @@ export default function AnimatedVoiceInterview({ company, job, onBack, onComplet
     
     utterance.onend = () => {
       setIsSpeaking(false);
-      // Auto-resume listening after speaking
-      // Increased delay to prevent self-transcription (echo)
-      setTimeout(() => {
-        // Only resume if we were in a "listening" flow (optional, but good for auto-turn-taking)
-        // For now, we'll let the user manually toggle or just rely on the fact that they stopped speaking
-        // But to match the "echo prevention" request:
-        // We don't auto-start mic here unless we want continuous conversation.
-        // The previous code did auto-start. Let's keep it but with delay.
-        startDeepgram();
-      }, 1500);
+      // Do not auto-resume mic to prevent AI echo/extra words
+      wasListeningRef.current = false;
     };
     
     synthRef.current.speak(utterance);
@@ -316,8 +323,9 @@ export default function AnimatedVoiceInterview({ company, job, onBack, onComplet
     }
   };
   
-  const displayText = transcript + (interimText ? ' ' + interimText : '');
-  const currentText = displayText || aiResponse || 'Hey, GET I need your help on one of my new projects chatbots about tree organizing...';
+  const displayText = mergeTranscript(transcript, interimText);
+  const canSubmit = !!displayText && !loading;
+  const currentText = displayText || aiResponse || 'Tap the mic and start answering.';
   
   return (
     <div className="fixed inset-0 bg-[#0a0e27] flex items-center justify-center z-50 overflow-hidden">
@@ -507,6 +515,19 @@ export default function AnimatedVoiceInterview({ company, job, onBack, onComplet
                   whileTap={{ scale: 0.9 }}
                 >
                   <RotateCcw className="w-5 h-5 text-white" />
+                </motion.button>
+              </div>
+
+              {/* Manual Submit */}
+              <div className="flex justify-center pb-4">
+                <motion.button
+                  onClick={() => submitAnswer()}
+                  disabled={!canSubmit || isSpeaking}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${canSubmit && !isSpeaking ? 'bg-green-500 hover:bg-green-600 text-white' : 'bg-white/10 text-gray-400 cursor-not-allowed'}`}
+                  whileHover={canSubmit && !isSpeaking ? { scale: 1.02 } : undefined}
+                  whileTap={canSubmit && !isSpeaking ? { scale: 0.98 } : undefined}
+                >
+                  Send Answer
                 </motion.button>
               </div>
               

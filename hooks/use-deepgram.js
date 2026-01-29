@@ -15,6 +15,10 @@ export function useDeepgram() {
   const deepgramRef = useRef(null);
   const microphoneRef = useRef(null);
   const streamRef = useRef(null);
+  const transcriptRef = useRef('');
+  const lastFinalRef = useRef('');
+
+  const normalizeText = (text = '') => text.replace(/\s+/g, ' ').trim().toLowerCase();
 
   const startDeepgram = useCallback(async () => {
     try {
@@ -81,15 +85,33 @@ export function useDeepgram() {
       });
 
       connection.on(LiveTranscriptionEvents.Transcript, (data) => {
-        const sentence = data.channel.alternatives[0].transcript;
-        
-        if (sentence) {
-          if (data.is_final) {
-            setTranscript((prev) => prev + ' ' + sentence);
+        const sentence = data?.channel?.alternatives?.[0]?.transcript?.trim();
+        if (!sentence) return;
+
+        const normalizedSentence = normalizeText(sentence);
+        const normalizedTranscript = normalizeText(transcriptRef.current);
+        const normalizedLastFinal = normalizeText(lastFinalRef.current);
+
+        if (data.is_final) {
+          // Avoid duplicates and overlaps
+          if (normalizedSentence && (normalizedSentence === normalizedLastFinal || normalizedTranscript.endsWith(normalizedSentence))) {
             setInterimTranscript('');
-          } else {
-            setInterimTranscript(sentence);
+            return;
           }
+
+          const spacer = transcriptRef.current ? ' ' : '';
+          const nextTranscript = (transcriptRef.current + spacer + sentence).replace(/\s+/g, ' ').trim();
+          transcriptRef.current = nextTranscript;
+          lastFinalRef.current = sentence;
+          setTranscript(nextTranscript);
+          setInterimTranscript('');
+        } else {
+          // Only show interim if it's not already included in final transcript
+          if (normalizedSentence && normalizedTranscript.endsWith(normalizedSentence)) {
+            setInterimTranscript('');
+            return;
+          }
+          setInterimTranscript(sentence);
         }
       });
 
@@ -146,6 +168,8 @@ export function useDeepgram() {
   const clearTranscript = useCallback(() => {
     setTranscript('');
     setInterimTranscript('');
+    transcriptRef.current = '';
+    lastFinalRef.current = '';
   }, []);
 
   // Cleanup on unmount
